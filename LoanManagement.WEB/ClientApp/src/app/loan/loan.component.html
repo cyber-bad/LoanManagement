@@ -1,0 +1,26 @@
+<h1>Personal Loan TopUp or Apply</h1>
+<hr />
+<div>
+  <div>To apply for a TopUp of an existing loan amount, please selecte the loan below, make note of Carry-over amount before proceeding.</div>
+
+  <div> Carryover / Payout Amount $0</div>
+
+  <div>Apply for Increased Loan Amounts</div>
+
+  <div>Apply for New Personal Loan</div>
+
+
+</div>
+
+<div>
+  <div> You have {{loans?.length}} Personal Loan<span *ngIf="loans?.length>1">s</span></div>
+
+  <div>
+
+    <ul *ngFor="let loan of loans">
+      <li>Loan {{loan.loanId}} {{loan.Name}}  <div>balance: {{loan.balance}}</div></li>
+    </ul>
+
+  </div>
+</div>
+

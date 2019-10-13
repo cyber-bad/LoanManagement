@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanManagement.Data.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanManagement.API", "LoanManagement.API\LoanManagement.API.csproj", "{83A268E3-AF22-4D98-B4B8-E7FD47E72863}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanManagement.WEB", "LoanManagement.WEB\LoanManagement.WEB.csproj", "{AD37853A-68F0-43E6-91B2-A8816BC2DF6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{83A268E3-AF22-4D98-B4B8-E7FD47E72863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A268E3-AF22-4D98-B4B8-E7FD47E72863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A268E3-AF22-4D98-B4B8-E7FD47E72863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD37853A-68F0-43E6-91B2-A8816BC2DF6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD37853A-68F0-43E6-91B2-A8816BC2DF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD37853A-68F0-43E6-91B2-A8816BC2DF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD37853A-68F0-43E6-91B2-A8816BC2DF6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

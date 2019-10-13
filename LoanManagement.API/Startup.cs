@@ -24,8 +24,9 @@ namespace LoanManagement.API
         }
 
         public IConfiguration Configuration { get; }
+        readonly string allowCORS = "allowCORS";
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -33,16 +34,19 @@ namespace LoanManagement.API
             //services.AddDbContext<LoanManagementDBContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("LoanManagementAPIContext")));
 
-            services.AddDbContext<LoanManagementDBContext>(options => 
+            services.AddDbContext<LoanManagementDBContext>(options =>
             options.UseInMemoryDatabase("LoanManagement"));
 
             services.AddTransient<ILoanService, LoanService>();
             services.AddTransient<ILoanRepository, LoanRepository>();
-
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(
+        options => options.WithOrigins("*").AllowAnyMethod()
+    );
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseRouting();
@@ -55,6 +59,8 @@ namespace LoanManagement.API
             });
 
             app.UseExceptionHandler("/Error");
-        }   
+
+        }
+
     }
 }
