@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "2ef769a5-a228-454b-b606-7d1aa6f40158",
+		"name": "LoanManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Loans",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0fa49d22-bd3e-45b5-9e45-1ae836235daa",
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check response value\", function () {\r",
+							"      pm.expect(jsonData).to.have.lengthOf(3);\r",
+							"  });\r",
+							"  \r",
+							" \r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiBaseURL}}/loan",
+					"host": [
+						"{{apiBaseURL}}"
+					],
+					"path": [
+						"loan"
+					]
+				},
+				"description": "get loans"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
