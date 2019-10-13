@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using LoanManagement.Data;
 using LoanManagement.Service;
+using LoanManagement.API.Extensions;
 
 namespace LoanManagement.API
 {
@@ -37,14 +38,12 @@ namespace LoanManagement.API
 
             services.AddTransient<ILoanService, LoanService>();
             services.AddTransient<ILoanRepository, LoanRepository>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseRouting();
 
@@ -54,6 +53,8 @@ namespace LoanManagement.API
             {
                 endpoints.MapControllers();
             });
-        }
+
+            app.UseExceptionHandler("/Error");
+        }   
     }
 }

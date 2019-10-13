@@ -15,7 +15,7 @@ namespace LoanManagement.API.Controllers
     {
 
         private readonly ILoanService loanService;
-        public LoanController(ILogger<LoanController> logger, ILoanService loansService)
+        public LoanController(ILoanService loansService)
         {
             loanService = loansService;
         }
