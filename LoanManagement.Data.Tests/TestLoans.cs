@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LoanManagement.Data.Tests
@@ -6,9 +7,14 @@ namespace LoanManagement.Data.Tests
     public class TestLoanRepository
     {
         private readonly ILoanRepository loanRepository;
-        public TestLoanRepository(ILoanRepository repository)
-        {
-            loanRepository = repository;
+        public TestLoanRepository() {
+            var options = new DbContextOptionsBuilder<LoanManagementDBContext>()
+                    .UseInMemoryDatabase(databaseName: "LoanManagement")
+                    .Options;
+            var context = new LoanManagementDBContext(options);
+            loanRepository = new LoanRepository(context);
+            DataSetup.Initialize(context);
+            
         }
 
         [TestMethod]

@@ -11,6 +11,7 @@ namespace LoanManagement.Data
         public LoanManagementDBContext (DbContextOptions<LoanManagementDBContext> options)
             : base(options)
         {
+            DataSetup.Initialize(this);
         }
             
         public DbSet<Loan> Loan { get; set; }
