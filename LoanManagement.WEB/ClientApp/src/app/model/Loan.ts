@@ -5,4 +5,5 @@ export class Loan {
     interest: number;
     earlyPaymentFee: number;
     carryOverAmount: number;
+    isSelected: boolean;
 }

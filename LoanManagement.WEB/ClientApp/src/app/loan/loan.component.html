@@ -1,26 +1,95 @@
-<h1>Personal Loan TopUp or Apply</h1>
-<hr />
-<div>
-  <div>To apply for a TopUp of an existing loan amount, please selecte the loan below, make note of Carry-over amount before proceeding.</div>
 
-  <div> Carryover / Payout Amount $0</div>
+<br>
 
-  <div>Apply for Increased Loan Amounts</div>
-
-  <div>Apply for New Personal Loan</div>
-
-
-</div>
-
-<div>
-  <div> You have {{loans?.length}} Personal Loan<span *ngIf="loans?.length>1">s</span></div>
-
-  <div>
-
-    <ul *ngFor="let loan of loans">
-      <li>Loan {{loan.loanId}} {{loan.Name}}  <div>balance: {{loan.balance}}</div></li>
-    </ul>
-
+<div class="margin">
+  <div class="row margin">
+    <div class="col-main">
+      <h2>Personal Loan TopUp or Apply</h2>
+      <hr />
+    </div>
+    <div class="col-right">
+    </div>
   </div>
-</div>
+  <div class="">
+    <div class="row solid">
+      <div class="col-main title">
+        <div class="row ">
+          <div class="col-main ">
+            To apply for a TopUp of an existing loan amount, please select the loan below, make note of Carry-over amount before proceeding.
+          </div>
+          <div class="col-right ">Carryover / Payout Amount <b>${{carryOverAmount}}</b></div>
+        </div>
 
+      </div>
+      <div class="col-right solid">
+        <button class="button" [disabled]="loans?.length>2">Apply for Increased Loan Amounts</button>
+      </div>
+    </div>
+    <div class="row solid">
+      <div class="col-main ">
+
+      </div>
+      <div class="col-right solid">
+        <button class="button" [disabled]="!loans?.canApplyForNewLoan">Apply for New Personal Loan</button>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+      <div class="row">
+        <div class="col-main solid">
+          <h5> You have {{loans?.length}} Personal Loan<span *ngIf="loans?.length>1">s</span></h5>
+
+          <ul *ngFor="let loan of loans">
+            <li>
+              <div class="solid">
+                <div class="detail-title">Loan {{loan.loanId}} {{loan.name}}</div>
+                <hr />
+
+                <div class="row ">
+                  <div class="col-third">Balance</div>
+                  <div class="col-third">${{loan.balance}}</div>
+                  <div class="col-third"><input type="checkbox" [(ngModel)]="loan.isSelected" (change)="calculatePayout(loan.loanId,$event)">TopUp</div>
+
+                </div>
+                <hr />
+                <div class="row " *ngIf="loan.isSelected">
+                  <div class="col-third">Balance includes interest of</div>
+                  <div class="col-third">${{loan.interest}}</div>
+                  <div class="col-third"></div>
+
+                </div>
+                <div class="row " *ngIf="loan.isSelected">
+                  <div class="col-third">Early repayment fee</div>
+                  <div class="col-third">${{loan.earlyPaymentFee}}</div>
+                  <div class="col-third"></div>
+
+                </div>
+                <div class="row " *ngIf="loan.isSelected">
+                  <div class="col-third">Payout / Carryover Amount</div>
+                  <div class="col-third"><b>${{loan.carryOverAmount}}</b></div>
+                  <div class="col-third">This amount will be carried over</div>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="col-right" *ngIf="hasError">
+          <div>
+            <h2>Error</h2>
+            <p>{{ErrorMessage}}</p>
+
+          </div>
+        </div>
+        <div class="col-right" *ngIf="hasInfo">
+          <div>
+            <h5>Information:</h5>
+            <p>{{infoMessage}}</p>
+
+          </div>
+        </div>
+      </div>
+</div>
