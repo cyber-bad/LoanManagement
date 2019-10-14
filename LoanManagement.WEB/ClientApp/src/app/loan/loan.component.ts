@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Loan } from '../model/Loan';
 import { LoanService } from '../services/loan.service';
-
+import { Store } from '@ngrx/store';
+import { AppState } from '../model/app-state';
+import { Observable } from 'rxjs';
+import * as loanAcions from '../actions/loan.action';
 
 @Component({
     selector: 'loan',
@@ -11,6 +14,7 @@ import { LoanService } from '../services/loan.service';
 export class LoanComponent implements OnInit {
 
     loans: Loan[];
+    loans$: Observable<any>;
     carryOverAmount: number=0;
     hasError: boolean;
     errorMessage: string;
@@ -18,13 +22,17 @@ export class LoanComponent implements OnInit {
     infoMessage: string;
     canApplyForNewLoan: boolean;
 
-    constructor(private loanService: LoanService) { }
+    constructor(private loanService: LoanService, private store: Store<AppState>) {
+        this.loans$ = this.store.select(state => state.loans);
+    }
 
     ngOnInit() {
         this.getLoans();
     }
 
     getLoans(): void {
+        this.store.dispatch(new loanAcions.GetLoansAction());
+
         this.loanService.getLoans()
             .subscribe(loans => { this.loans = loans; this.canApplyForLoan(); },
                 (error) => {
@@ -55,5 +63,13 @@ export class LoanComponent implements OnInit {
 
     }
 
+    anySelected(): boolean {
+        for (var i = 0; i < this.loans.length; i++) {
+            if (this.loans[i].isSelected) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

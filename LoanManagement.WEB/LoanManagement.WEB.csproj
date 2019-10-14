@@ -32,14 +32,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\actions\loan.action.ts" />
+    <None Remove="ClientApp\src\app\effects\loan.effects.ts" />
     <None Remove="ClientApp\src\app\loan\loan.component.spec.ts" />
+    <None Remove="ClientApp\src\app\model\app-state.ts" />
     <None Remove="ClientApp\src\app\model\Loan.ts" />
+    <None Remove="ClientApp\src\app\reducers\loan.reducer.ts" />
     <None Remove="ClientApp\src\app\services\loan.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\actions\loan.action.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\effects\loan.effects.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loan\loan.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\app-state.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\reducers\loan.reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\loan.service.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\Loan.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\loan.service.ts" />

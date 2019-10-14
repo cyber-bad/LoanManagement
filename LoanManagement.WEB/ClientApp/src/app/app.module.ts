@@ -5,6 +5,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoanComponent } from './loan/loan.component';
+import { StoreModule } from '@ngrx/store';
+import { loanReducer } from './reducers/loan.reducer';
+
 
 @NgModule({
     declarations: [
@@ -19,7 +22,8 @@ import { LoanComponent } from './loan/loan.component';
             { path: '', component: LoanComponent },
             { path: 'loan', component: LoanComponent }
 
-        ])
+        ]),
+        StoreModule.forRoot({loans:loanReducer})
     ],
     providers: [],
     bootstrap: [AppComponent]
