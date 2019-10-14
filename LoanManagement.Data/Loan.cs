@@ -14,6 +14,6 @@ namespace LoanManagement.Data
         public decimal Balance { get; set; }
         public decimal Interest { get; set; }
         public decimal EarlyPaymentFee { get; set; }
-        public decimal CarryOverAmount { get { return Balance + EarlyPaymentFee + Interest; } }
+    
     }
 }
